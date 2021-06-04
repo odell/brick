@@ -7,7 +7,7 @@ permits the sampling of R-matrix parameters.
 
 It _accompanies_ AZURE2. The **primary** goal is to allow the user to deploy
 Markov Chain Monte Carlo (MCMC) to sample parameters that are typically
-optimized in a $\chi^2$-minimization analysis.
+optimized in a &chi;<sup>2</sup>-minimization analysis.
 
 ## Requirements
 
