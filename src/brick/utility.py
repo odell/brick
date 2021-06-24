@@ -7,7 +7,7 @@ import random
 import os
 from subprocess import Popen, PIPE
 import numpy as np
-from level import Level
+from .level import Level
 
 '''
 The rows of levels in the .azr file are converted to list of strings. These

@@ -5,13 +5,13 @@ Defines classes for interacting with AZURE2.
 import os
 import shutil
 import numpy as np
-import level
-import utility
-from parameter import Parameter
-from output import Output
-from data import Data
-from nodata import Test
-from configuration import Config
+from . import level
+from . import utility
+from .parameter import Parameter
+from .output import Output
+from .data import Data
+from .nodata import Test
+from .configuration import Config
 
 class AZR:
     '''

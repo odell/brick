@@ -3,7 +3,7 @@ Classes to hold Test segments as found in AZURE2 input files.
 '''
 
 import numpy as np
-import utility
+from . import utility
 
 INCLUDE_INDEX = 0
 IN_CHANNEL_INDEX = 1

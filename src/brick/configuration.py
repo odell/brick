@@ -3,10 +3,10 @@ Class to read and write the contents of an AZURE2 input file.
 The purpose is to remove as much of this work from AZR as possible.
 '''
 
-import utility
-from data import Data
-from nodata import Test
-from parameter import Parameter
+from . import utility
+from .data import Data
+from .nodata import Test
+from .parameter import Parameter
 
 class Config:
     def __init__(self, input_filename, parameters=None):

@@ -3,8 +3,8 @@ Classes to hold Data segments as found in .azr files.
 '''
 
 import numpy as np
-import utility
-from parameter import NormFactor
+from . import utility
+from .parameter import NormFactor
 
 INCLUDE_INDEX = 0
 IN_CHANNEL_INDEX = 1
