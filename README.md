@@ -69,16 +69,24 @@ Note that the script uses NumPy and Matplotlib.
 
 ## Installation
 
-Once the repository has been cloned in `location`, the user can simply modify
-the path and `import` the relevant modules.
+The simplest way to install `brick` is to use `pip` via:
 
 ```
-import sys
-sys.path.append(location)
-
-import azr
-import parameter
-import utility
-import level
-import output
+pip install brick-james
 ```
+
+Alternatively, one may clone the repository on
+[GitHub](https://github.com/odell/brick).
+
+## Use
+
+Once installed, `brick` allows the user to access the relevant classes and
+functions by:
+
+```
+import brick
+
+azr_object = brick.azr.AZR('input.azr')
+```
+
+More instructive test are forthcoming.
