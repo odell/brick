@@ -5,6 +5,7 @@ requires = [
     "numpy",
     "matplotlib",
     "emcee",
-    "corner"
+    "corner",
+    "jupyter"
 ]
 build-backend = "setuptools.build_meta"
