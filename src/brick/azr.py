@@ -40,6 +40,7 @@ class AZR:
         self.use_gsl = True
         self.ext_par_file = '\n'
         self.ext_capture_file = '\n'
+        self.ext_capture_file_extrap = '\n'
         self.command = 'AZURE2'
         self.root_directory = ''
         
@@ -137,7 +138,7 @@ class AZR:
 
 
     def extrapolate(self, theta, segment_indices=None, use_brune=None,
-                    use_gsl=None, ext_capture_file='\n'):
+                    use_gsl=None, ext_capture_file=None):
         '''
         See predict() documentation.
         '''
@@ -150,7 +151,8 @@ class AZR:
                 use_brune=use_brune if use_brune is not None else self.use_brune,
                 use_gsl=use_gsl if use_gsl is not None else self.use_gsl,
                 ext_par_file=self.ext_par_file,
-                ext_capture_file=ext_capture_file,
+                ext_capture_file=(ext_capture_file if ext_capture_file is not
+                    None else self.ext_capture_file_extrap),
                 command=self.command)
         except:
             shutil.rmtree(output_dir)
