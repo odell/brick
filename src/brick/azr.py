@@ -18,19 +18,19 @@ class AZR:
     Object that manages the communication between Python and AZURE2.
 
     Attributes specified at instantiation:
-    input_filename   : .azr file
-    parameters       : list of Parameter instances (sampled parameters)
-    output_filenames : Which output files (AZUREOut_*.out) are read?
-    extrap_filenames : Which output files (AZUREOut_*.extrap) are read?
+    input_filename          : .azr file
+    parameters              : list of Parameter instances (sampled parameters)
+    output_filenames        : Which output files (AZUREOut_*.out) are read?
+    extrap_filenames        : Which output files (AZUREOut_*.extrap) are read?
 
     Other attributes (given default values below):
-    use_brune        : Bool that indicates the use of the Brune
-                       parameterization.
-    use_gsl          : Bool that indicates the use of GSL Coulomb functions.
-    ext_par_file     : Filename where parameter values can be read.
-    ext_capture_file : Filename where external capture integral results have
-                       been stored.
-    command          : Name of AZURE2 binary.
+    use_brune               : Bool that indicates the use of the Brune
+                              parameterization.
+    use_gsl                 : Bool that indicates the use of GSL Coulomb functions.
+    ext_par_file            : Filename where parameter values can be read.
+    ext_capture_file        : Filename where external capture integral results have
+                              been stored.
+    command                 : Name of AZURE2 binary.
     '''
     def __init__(self, input_filename, parameters=None, output_filenames=None,
                  extrap_filenames=None):
