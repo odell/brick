@@ -30,6 +30,8 @@ class AZR:
     ext_par_file            : Filename where parameter values can be read.
     ext_capture_file        : Filename where external capture integral results have
                               been stored.
+    ext_capture_file_extrap : Filenme where external capture integral results
+                              for segments without data have been stored.
     command                 : Name of AZURE2 binary.
     '''
     def __init__(self, input_filename, parameters=None, output_filenames=None,
