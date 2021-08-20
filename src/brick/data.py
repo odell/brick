@@ -92,22 +92,19 @@ class Data:
         j = self.contents.index('</segmentsData>')
 
         # All segments listed in the file.
-        self.all_segments = []
+        self.segments = []
         k = 0
         for row in self.contents[i:j]:
             if row != '':
-                self.all_segments.append(Segment(row, k))
+                row_list = row.split()
+                include = (int(row_list[INCLUDE_INDEX]) == 1)
+                if include:
+                    self.segments.append(Segment(row, k))
                 k += 1
-
-        # All segments included in the calculation.
-        self.segments = []
-        for seg in self.all_segments:
-            if seg.include:
-                self.segments.append(seg)
 
         # Indices of segments with varied normalization constants.
         self.norm_segment_indices = []
-        for (i, seg) in enumerate(self.all_segments):
+        for (i, seg) in enumerate(self.segments):
             if seg.include and seg.vary_norm_factor:
                 self.norm_segment_indices.append(i)
 
@@ -139,7 +136,7 @@ class Data:
             row[FILEPATH_INDEX] = new_dir + '/' + old_path[j:]
             new_contents[i] = ' '.join(row)
         
-        for seg in self.all_segments:
+        for seg in self.segments:
             seg.update_dir(new_dir)
 
         return new_contents
@@ -155,8 +152,8 @@ class Data:
         start = contents.index('<segmentsData>')+1
         stop = contents.index('</segmentsData>')
 
-        for (i, segment) in zip(range(start, stop), self.all_segments):
-            contents[i] = segment.string()
+        for segment in self.segments:
+            contents[start+segment.index] = segment.string()
 
         return contents
 
@@ -167,7 +164,7 @@ Number of normalization factors does not match the number of data segments
 indicating the normalization factor should be varied.
 '''
         for (f, i) in zip(theta_norm, self.norm_segment_indices):
-            self.all_segments[i].norm_factor = f
+            self.segments[i].norm_factor = f
 
         self.write_segments(contents)
         

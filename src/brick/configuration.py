@@ -63,7 +63,7 @@ class Config:
         for i in range(self.n1):
             self.labels.append(self.parameters[i].label)
         for i in self.data.norm_segment_indices:
-            self.labels.append(self.data.all_segments[i].nf.label)
+            self.labels.append(self.data.segments[i].nf.label)
 
 
     def generate_levels(self, theta):
@@ -89,7 +89,7 @@ class Config:
         values = [getattr(self.initial_levels[i][j], kind) for (i, j, kind) in
                   self.addresses]
         for i in self.data.norm_segment_indices:
-            values.append(self.data.all_segments[i].norm_factor)
+            values.append(self.data.segments[i].norm_factor)
         return values
 
 
