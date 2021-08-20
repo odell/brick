@@ -26,22 +26,30 @@ class Config:
                 # add it to the list
                 jpis.append(jpi)
                 for (i, sublevel) in enumerate(group):
-                    spin = sublevel.spin
-                    parity = sublevel.parity
-                    rank = jpis.count(jpi)
-                    if i == 0:
-                        if not sublevel.energy_fixed:
-                            self.parameters.append(Parameter(spin, parity, 'energy', i+1, rank=rank))
-                    if not sublevel.width_fixed:
-                        if sublevel.energy < sublevel.separation_energy:
-                            self.parameters.append(
-                                Parameter(spin, parity, 'width', i+1, rank=rank,
-                                          is_anc=True)
-                            )
-                        else:
-                            self.parameters.append(
-                                Parameter(spin, parity, 'width', i+1, rank=rank)
-                            )
+                    if sublevel.include:
+                        spin = sublevel.spin
+                        parity = sublevel.parity
+                        rank = jpis.count(jpi)
+                        if i == 0:
+                            if not sublevel.energy_fixed:
+                                self.parameters.append(
+                                    Parameter(
+                                        spin, parity, 'energy', i+1, rank=rank
+                                    )
+                                )
+                        if not sublevel.width_fixed:
+                            if sublevel.energy < sublevel.separation_energy:
+                                self.parameters.append(
+                                    Parameter(
+                                        spin, parity, 'width', i+1, rank=rank, is_anc=True
+                                    )
+                                )
+                            else:
+                                self.parameters.append(
+                                    Parameter(
+                                        spin, parity, 'width', i+1, rank=rank
+                                    )
+                                )
         else:
             self.parameters = parameters
 

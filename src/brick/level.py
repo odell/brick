@@ -26,6 +26,7 @@ class Level:
         self.channel_radius = float(row[CHANNEL_RADIUS_INDEX])
         self.channel = int(row[CHANNEL_INDEX])
         self.separation_energy = float(row[SEPARATION_ENERGY_INDEX])
+        self.include = int(row[LEVEL_INCLUDE_INDEX])
 
     def describe(self):
         sign = '+' if self.parity > 0 else '-'
