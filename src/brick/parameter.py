@@ -48,4 +48,4 @@ class NormFactor:
     '''
     def __init__(self, dataset_index):
         self.index = dataset_index
-        self.label = r'$n_{%d}$' % (self.index)
+        self.label = r'$n_{%d}$' % (self.index+1)
