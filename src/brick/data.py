@@ -5,13 +5,7 @@ Classes to hold Data segments as found in .azr files.
 import numpy as np
 from . import utility
 from .parameter import NormFactor
-
-INCLUDE_INDEX = 0
-IN_CHANNEL_INDEX = 1
-OUT_CHANNEL_INDEX = 2
-NORM_FACTOR_INDEX = 8
-VARY_NORM_FACTOR_INDEX = 9
-FILEPATH_INDEX = 11
+from .constants import *
 
 class Segment:
     '''

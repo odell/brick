@@ -8,22 +8,7 @@ import os
 from subprocess import Popen, PIPE
 import numpy as np
 from .level import Level
-
-'''
-The rows of levels in the .azr file are converted to list of strings. These
-indices make it more convenient to access the desired parameter.
-'''
-J_INDEX = 0
-PI_INDEX = 1
-ENERGY_INDEX = 2
-ENERGY_FIXED_INDEX = 3
-CHANNEL_INDEX = 5
-WIDTH_INDEX = 11
-WIDTH_FIXED_INDEX = 10
-SEPARATION_ENERGY_INDEX = 21
-CHANNEL_RADIUS_INDEX = 27
-OUTPUT_DIR_INDEX = 2
-DATA_FILEPATH_INDEX = 11
+from .constants import *
 
 def read_input_file(filename):
     '''
@@ -59,19 +44,7 @@ def read_levels(infile):
     sublevels = []
     for row in level_contents:
         if row != '':
-            row = row.split()
-            spin = float(row[J_INDEX])
-            parity = int(row[PI_INDEX])
-            energy = float(row[ENERGY_INDEX])
-            energy_fixed = int(row[ENERGY_FIXED_INDEX])
-            width = float(row[WIDTH_INDEX])
-            width_fixed = int(int(row[WIDTH_FIXED_INDEX]) or width == 0)
-            radius = float(row[CHANNEL_RADIUS_INDEX])
-            channel = int(row[CHANNEL_INDEX])
-            separation_energy = float(row[SEPARATION_ENERGY_INDEX])
-            sublevels.append(Level(spin, parity, energy, energy_fixed, width,
-                                   width_fixed, radius, channel,
-                                   separation_energy))
+            sublevels.append(Level(row))
         else:
             levels.append(sublevels)
             sublevels = []

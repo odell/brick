@@ -1,3 +1,9 @@
+'''
+Defines the Level class.
+'''
+
+from .constants import *
+
 class Level:
     '''
     Simple data structure for storing the spin (total J), parity (+/-1),
@@ -9,18 +15,17 @@ class Level:
     index   : Which spin^{parity} level is this? (There are frequently more than
               one. Consistent with the language, these are zero-based.)
     '''
-    def __init__(self, spin, parity, energy, energy_fixed, width, width_fixed,
-                 radius, channel, separation_energy):
-        self.spin = spin
-        self.parity = parity
-        self.energy = energy
-        self.energy_fixed = energy_fixed
-        self.width = width
-        self.width_fixed = width_fixed
-        self.channel_radius = radius
-        self.channel = channel
-        self.separation_energy = separation_energy
-
+    def __init__(self, row_str):
+        row = row_str.split()
+        self.spin = float(row[J_INDEX])
+        self.parity = int(row[PI_INDEX])
+        self.energy = float(row[ENERGY_INDEX])
+        self.energy_fixed = int(row[ENERGY_FIXED_INDEX])
+        self.width = float(row[WIDTH_INDEX])
+        self.width_fixed = int(int(row[WIDTH_FIXED_INDEX]) or self.width == 0)
+        self.channel_radius = float(row[CHANNEL_RADIUS_INDEX])
+        self.channel = int(row[CHANNEL_INDEX])
+        self.separation_energy = float(row[SEPARATION_ENERGY_INDEX])
 
     def describe(self):
         sign = '+' if self.parity > 0 else '-'
