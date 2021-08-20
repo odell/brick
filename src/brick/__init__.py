@@ -1,4 +1,4 @@
-with open('setup.cfg', 'r') as f:
+with open('../../setup.cfg', 'r') as f:
     cfg = f.read()
 
 version_string = list(filter(
