@@ -39,7 +39,7 @@ class Segment:
         else:
             self.output_filename = f'AZUREOut_aa={self.in_channel}_TOTAL_CAPTURE.out'
 
-    
+   
     def string(self):
         '''
         Returns a string of the text in the segment line.
@@ -53,7 +53,14 @@ class Segment:
         row[NORM_FACTOR_INDEX] = str(self.norm_factor)
         # necessary?
         
-        return ' '.join(row)
+        return print(' '.join(row))
+
+
+    def print(self):
+        '''
+        Prints description of the data segment.
+        '''
+        print(self.string())
 
 
     def update_dir(self, new_dir, values=None):

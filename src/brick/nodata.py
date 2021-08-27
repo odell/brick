@@ -35,6 +35,11 @@ class TestSegment:
         
         return ' '.join(row)
 
+    def print(self):
+        '''
+        Prints a description of the test segment.
+        '''
+        print(self.string())
 
 class Test:
     '''

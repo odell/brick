@@ -31,12 +31,18 @@ class Parameter:
 
 
     def string(self):
+        '''
+        Returns a string that describes the parameter.
+        '''
         parity = '+' if self.parity == 1 else '-'
         return f'{self.spin}{parity} {self.kind} (number {self.rank}) in \
 particle pair {self.channel}, {self.label}'
 
 
     def print(self):
+        '''
+        Prints a description of the parameters.
+        '''
         print(self.string())
 
 

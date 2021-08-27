@@ -28,7 +28,10 @@ class Level:
         self.separation_energy = float(row[SEPARATION_ENERGY_INDEX])
         self.include = int(row[LEVEL_INCLUDE_INDEX])
 
-    def describe(self):
+    def print(self):
+        '''
+        Prints a description of the level.
+        '''
         sign = '+' if self.parity > 0 else '-'
         print(f'{self.spin}{sign} | \
 {self.energy} MeV | {self.width} eV | channel {self.channel}')
