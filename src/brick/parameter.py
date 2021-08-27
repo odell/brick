@@ -28,8 +28,6 @@ class Parameter:
                 self.label = r'$C_{%s}^{%s}$' % (subscript, superscript)
             else:
                 self.label = r'$\Gamma_{%s}^{%s}$' % (subscript, superscript)
-        else:
-            print('"kind" attribute must be either "energy" or "width"')
 
 
     def string(self):

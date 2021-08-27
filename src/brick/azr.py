@@ -45,6 +45,7 @@ class AZR:
         self.ext_capture_file_extrap = '\n'
         self.command = 'AZURE2'
         self.root_directory = ''
+        self.verbose = True
         
         self.config = Config(input_filename, parameters=parameters)
 
@@ -110,7 +111,8 @@ class AZR:
             shutil.rmtree(output_dir)
             shutil.rmtree(data_dir)
             os.remove(input_filename)
-            print('AZURE2 did not execute properly.')
+            if self.verbose:
+                print('AZURE2 did not execute properly.')
             raise
 
         try:
@@ -133,9 +135,10 @@ class AZR:
             shutil.rmtree(output_dir)
             shutil.rmtree(data_dir)
             os.remove(input_filename)
-            print('Output files were not properly read.')
-            print('AZURE output:')
-            print(response)
+            if self.verbose:
+                print('Output files were not properly read.')
+                print('AZURE output:')
+                print(response)
             raise
 
 
@@ -159,7 +162,8 @@ class AZR:
         except:
             shutil.rmtree(output_dir)
             os.remove(input_filename)
-            print('AZURE2 did not execute properly.')
+            if self.verbose:
+                print('AZURE2 did not execute properly.')
             raise
 
         try:
@@ -170,7 +174,8 @@ class AZR:
         except:
             shutil.rmtree(output_dir)
             os.remove(input_filename)
-            print('Output files could not be read.')
+            if self.verbose:
+                print('Output files could not be read.')
             raise
 
 
