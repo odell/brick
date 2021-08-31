@@ -21,7 +21,7 @@ none                                                                            
 </levels>
 <segmentsData>
 1              1              2              0              50             0              180            0              1.1            1              10             data/vogl.dat
-1              1              2              0              10             0              180            1              1.2            1              10             data/rolfs_renorm.dat
+1              1              2              0              50             0              180            0              1.1            1              10             data/vogl_shifted.dat
 </segmentsData>
 <segmentsTest>
 1              1              1              0.1            0.1            0              0              0              0              0
