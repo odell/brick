@@ -78,6 +78,17 @@ pip install brick-james
 Alternatively, one may clone the repository on
 [GitHub](https://github.com/odell/brick).
 
+## Tests
+
+BRICK includes a suite of basic funcationality tests in the `tests/12Cpg`
+directory. The tests perform calculations of the 12C(p,gamma) reaction with two
+data sets. To run them, within the `tests/12Cpg` directory, use
+
+```
+python -m unittests -v tests.py
+```
+
+
 ## Use
 
 Once installed, `brick` allows the user to access the relevant classes and
