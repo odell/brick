@@ -19,6 +19,29 @@ class BRICKTests(unittest.TestCase):
         self.azr = AZR('12C+p.azr')
 
 
+    def test_output(self):
+        '''
+        Tests the consistency of AZURE2 and BRICK output.
+
+        The test runs BRICK at parameter point theta. The AZURE2-generated
+        output is stored in the output directory. The absolute difference ought
+        to be 0.
+        '''
+        theta = self.azr.config.get_input_values()
+        self.azr.use_gsl = True
+        self.azr.ext_capture_file = 'output/intEC.dat'
+        mu = self.azr.predict(theta, dress_up=False)[0]
+        azure2_output = np.loadtxt('output/AZUREOut_aa=1_R=2.out')
+
+        abs_diff = np.linalg.norm(mu - azure2_output)
+
+        self.assertTrue(abs_diff == 0, msg=f'''
+Output test failed. The output generated with AZURE2 with the values in the
+input file does not match the output generated with BRICK with the same values.
+The norm of the absolute difference is {abs_diff}.
+''')
+
+
     def test_norm_factors(self, norm_factor=1.1):
         '''
         Tests the implementation of normalization factors in BRICK.

@@ -6,5 +6,5 @@ J = 0.5-  E_level =   0.0000 MeV  ITERATIONS =     0
 
 J = 0.5+  E_level =   2.3689 MeV  ITERATIONS =     0
   R =  1  l =   0  s =  0.5  G  =    34.963200 keV        g_int =     3.018796 MeV^(1/2)   g_ext =  (0.000000,0.000000) MeV^(1/2) 
-  R =  2  L =  E1  s =  0.5  G  =   609.648000 meV        g_int =     0.447728 MeV^(1/2)   g_ext = (-1.410144,-0.035424) MeV^(1/2) 
+  R =  2  L =  E1  s =  0.5  G  =   609.648000 meV        g_int =     0.447383 MeV^(1/2)   g_ext = (-1.409794,-0.035559) MeV^(1/2) 
 
