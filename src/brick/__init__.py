@@ -5,4 +5,4 @@
 #     lambda s: 'version' in s, cfg.split('\n')
 # ))[0].split()[2]
 
-__version__ = '0.0.6'
+__version__ = '0.0.7'
