@@ -53,7 +53,7 @@ class Segment:
         row[NORM_FACTOR_INDEX] = str(self.norm_factor)
         # necessary?
         
-        return print(' '.join(row))
+        return ' '.join(row)
 
 
     def print(self):
