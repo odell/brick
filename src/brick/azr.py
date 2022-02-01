@@ -13,6 +13,12 @@ from .data import Data
 from .nodata import Test
 from .configuration import Config
 
+def clean_up(input_file, output_dir, data_dir):
+    shutil.rmtree(output_dir)
+    shutil.rmtree(data_dir)
+    os.remove(input_file)
+
+
 class AZR:
     '''
     Object that manages the communication between Python and AZURE2.
@@ -244,3 +250,45 @@ class AZR:
             self.config.data.segments[i].shift_energies(shift)
 
         return self.ext_capture_integrals(use_gsl=use_gsl, mod_data=True)
+
+
+    def reaction_rate(self, theta, entrance_pair, exit_pair, temperatures):
+        '''
+        Computes the reaction rate for entrance_pair -> exit_pair at
+        parameter-space point, theta, for temperatures listed in the array,
+        temperatures.
+        theta : NumPy array of parameter values
+        entrance_pair : int
+        exit_pair : int
+        temperatures : NumPy array of temperatures in GK
+        '''
+        workspace = self.config.generate_workspace(
+            theta,
+            prepend=self.root_directory,
+        )
+        input_filename, output_dir, data_dir = workspace
+        temperatures_filename = output_dir + '/temps.txt'
+        np.savetxt(temperatures_filename, temperatures.T)
+
+        try:
+            response = utility.reaction_rate(input_filename,
+                    temperatures_filename, entrance_pair, exit_pair,
+                    use_brune=self.use_brune, use_gsl=self.use_gsl,
+                    command=self.command)
+        except:
+            clean_up(input_filename, output_dir, data_dir)
+            if self.verbose:
+                print('AZURE2 did not execute properly.')
+            raise
+
+        try:
+            output = np.loadtxt(output_dir + '/reactionrates.out', skiprows=1)
+            clean_up(input_filename, output_dir, data_dir)
+            return output
+        except:
+            clean_up(input_filename, output_dir, data_dir)
+            if self.verbose:
+                print('Output reaction rate file was not properly read.')
+                print('AZURE output:')
+                print(response)
+            raise

@@ -212,3 +212,31 @@ def run_AZURE2(input_filename, choice=1, use_brune=False, ext_par_file='\n',
     options = str(choice) + '\n' + ext_par_file + ext_capture_file
     response = p.communicate(options.encode('utf-8'))
     return (response[0].decode('utf-8'), response[1].decode('utf-8'))
+
+
+def reaction_rate(
+    input_filename,
+    temperatures_filename,
+    entrance_pair,
+    exit_pair,
+    ext_par_file='\n',
+    use_brune=False,
+    use_gsl=False,
+    command='AZURE2'):
+    '''
+    Calculatates the reaction rate for the entrance_pair -> exit_pair reaction
+    at temperatures stored in temperatures_filename.
+    '''
+    cl_args = [command, input_filename, '--no-gui', '--no-readline']
+    if use_brune:
+        cl_args += ['--use-brune']
+    if use_gsl:
+        cl_args += ['--gsl-coul']
+
+    p = Popen(cl_args, stdin=PIPE, stdout=PIPE, stderr=PIPE)
+
+    options = '5\n' + ext_par_file + str(entrance_pair)+'\n' + \
+        str(exit_pair)+'\n' + 'yes\n' + temperatures_filename+'\n'
+    response = p.communicate(options.encode('utf-8'))
+
+    return (response[0].decode('utf-8'), response[1].decode('utf-8'))
