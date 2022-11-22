@@ -5,4 +5,6 @@
 #     lambda s: 'version' in s, cfg.split('\n')
 # ))[0].split()[2]
 
-__version__ = '0.1.1'
+from .azr import AZR
+
+__version__ = '0.2.1'

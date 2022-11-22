@@ -240,3 +240,28 @@ def reaction_rate(
     response = p.communicate(options.encode('utf-8'))
 
     return (response[0].decode('utf-8'), response[1].decode('utf-8'))
+
+
+def fit(
+    input_filename,
+    ext_param_file='\n',
+    ext_capture_file='\n',
+    use_brune=False,
+    use_gsl=False,
+    command='AZURE2'):
+    '''
+    Fits Segments from Data.
+    This can take a while.
+    '''
+    cl_args = [command, input_filename, '--no-gui', '--no-readline']
+    if use_brune:
+        cl_args += ['--use-brune']
+    if use_gsl:
+        cl_args += ['--gsl-coul']
+
+    p = Popen(cl_args, stdin=PIPE, stdout=PIPE, stderr=PIPE)
+
+    options = '2\n' + ext_param_file + ext_capture_file
+    response = p.communicate(options.encode('utf-8'))
+
+    return (response[0].decode('utf-8'), response[1].decode('utf-8'))

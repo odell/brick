@@ -32,7 +32,7 @@ class Segment:
         
         self.values_original = np.loadtxt(self.filepath)
         self.values = np.copy(self.values_original)
-        self.n = self.values.shape[0]
+        self.n = self.values.shape[0] if self.values.ndim > 1 else 1
 
         if self.out_channel != -1:
             self.output_filename = f'AZUREOut_aa={self.in_channel}_R={self.out_channel}.out'
