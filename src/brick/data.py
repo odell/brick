@@ -22,7 +22,7 @@ class Segment:
         self.index = index
 
         self.filepath = self.row[FILEPATH_INDEX]
-        i = self.filepath.find('/')
+        i = self.filepath.rfind('/')
         self.filename = self.filepath[i+1:]
 
         if self.vary_norm_factor:
@@ -133,7 +133,7 @@ class Data:
         for i in range(start, stop):
             row = contents[i].split()
             old_path = row[FILEPATH_INDEX]
-            j = old_path.find('/') + 1
+            j = old_path.rfind('/') + 1
             row[FILEPATH_INDEX] = new_dir + '/' + old_path[j:]
             new_contents[i] = ' '.join(row)
         

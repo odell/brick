@@ -127,9 +127,9 @@ class Config:
 
 
         if mod_data is not None:
+            contents = self.data.update_all_dir(data_dir, contents)
             utility.write_input_file(contents, new_levels, input_filename,
-                output_dir, data_dir=data_dir)
-            self.data.update_all_dir(data_dir, contents)
+                output_dir)
             for (i, data) in mod_data:
                 self.data.segments[i].update_dir(data_dir, data)
         else:
