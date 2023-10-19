@@ -14,14 +14,21 @@ class Segment:
     '''
     def __init__(self, row, index):
         self.row = row.split()
+        self.index = index
         self.include = (int(self.row[INCLUDE_INDEX]) == 1)
         self.in_channel = int(self.row[IN_CHANNEL_INDEX])
         self.out_channel = int(self.row[OUT_CHANNEL_INDEX])
-        self.norm_factor = float(self.row[NORM_FACTOR_INDEX])
-        self.vary_norm_factor = int(self.row[VARY_NORM_FACTOR_INDEX])
-        self.index = index
+        self.reaction_type = int(self.row[REACTION_TYPE])
 
-        self.filepath = self.row[FILEPATH_INDEX]
+        if self.reaction_type == 2:
+            self.norm_factor = float(self.row[NORM_FACTOR_INDEX + 2])
+            self.vary_norm_factor = int(self.row[VARY_NORM_FACTOR_INDEX + 2])
+            self.filepath = self.row[FILEPATH_INDEX + 2]
+        else:
+            self.norm_factor = float(self.row[NORM_FACTOR_INDEX])
+            self.vary_norm_factor = int(self.row[VARY_NORM_FACTOR_INDEX])
+            self.filepath = self.row[FILEPATH_INDEX]
+
         i = self.filepath.rfind('/')
         self.filename = self.filepath[i+1:]
 
@@ -46,11 +53,11 @@ class Segment:
         '''
         row = self.row.copy()
         # Are these lines...
-        row[INCLUDE_INDEX] = '1' if self.include else '0'
-        row[IN_CHANNEL_INDEX] = str(self.in_channel)
-        row[OUT_CHANNEL_INDEX] = str(self.out_channel)
-        row[FILEPATH_INDEX] = str(self.filepath)
-        row[NORM_FACTOR_INDEX] = str(self.norm_factor)
+        # row[INCLUDE_INDEX] = '1' if self.include else '0'
+        # row[IN_CHANNEL_INDEX] = str(self.in_channel)
+        # row[OUT_CHANNEL_INDEX] = str(self.out_channel)
+        # row[FILEPATH_INDEX] = str(self.filepath)
+        # row[NORM_FACTOR_INDEX] = str(self.norm_factor)
         # necessary?
         
         return ' '.join(row)
