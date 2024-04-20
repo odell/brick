@@ -56,8 +56,12 @@ class Segment:
         # row[INCLUDE_INDEX] = '1' if self.include else '0'
         # row[IN_CHANNEL_INDEX] = str(self.in_channel)
         # row[OUT_CHANNEL_INDEX] = str(self.out_channel)
-        # row[FILEPATH_INDEX] = str(self.filepath)
-        # row[NORM_FACTOR_INDEX] = str(self.norm_factor)
+        if self.reaction_type == 2:
+            row[FILEPATH_INDEX + 2] = str(self.filepath)
+            row[NORM_FACTOR_INDEX + 2] = str(self.norm_factor)
+        else:
+            row[FILEPATH_INDEX] = str(self.filepath)
+            row[NORM_FACTOR_INDEX] = str(self.norm_factor)
         # necessary?
         
         return ' '.join(row)
