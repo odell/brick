@@ -85,7 +85,7 @@ directory. The tests perform calculations of the 12C(p,gamma) reaction with two
 data sets. To run them, within the `tests/12Cpg` directory, use
 
 ```
-python -m unittests -v tests.py
+python -m unittest -v tests.py
 ```
 
 
